@@ -5,1004 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PERMAS UPNM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* CSS Reset dan Variabel */ /* Menggunakan warna rasmi Selangor dan UPNM */
-        :root {
-            --primary: #C8102E; /* Merah Selangor */
-            --secondary: #FFD700; /* Kuning/Emas Selangor */
-            --accent: #0055A4; /* Biru UPNM */
-            --light: #FFF9E6; /* Kuning muda */
-            --dark: #333333;
-            --gray: #666666;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .red-button {
-            background-color: #C8102E;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 5px;
-            font-weight: bold;
-        }
-        .red-button:hover {
-            background-color: #C8102E;
-        }
-    
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 6px rgba(200, 16, 46, 0.2); 
-        }
-
-        .btn:hover {
-            background-color: #a50d26;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(200, 16, 46, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary);
-            color: #333;
-        }
-
-        .btn-secondary:hover {
-            background-color: #e6c200;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-
-        .section-title.secondary:after {
-            background-color: var(--secondary);
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(90deg, var(--primary) 0%, #a50d26 100%);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-img {
-            height: 60px;
-            width: auto;
-        }
-
-        .logo-text h1 {
-            font-size: 1.5rem;
-            color: white;
-            line-height: 1.2;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .logo-text span {
-            color: var(--secondary);
-            font-size: 0.9rem;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            font-weight: 600;
-            color: white;
-            transition: var(--transition);
-            padding: 5px 0;
-            position: relative;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--secondary);
-        }
-
-        nav a:hover:after, nav a.active:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--secondary);
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(200, 16, 46, 0.85), rgba(255, 215, 0, 0.8)), 
-                url('images/permasSemua.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center 40%;
-            color: white;
-            text-align: center;
-            padding: 300px 0;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.95;
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background-color: white;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-img {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 5px solid var(--primary);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .about-img img:hover {
-            transform: scale(1.05);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--gray);
-        }
-
-        /* Vision Mission Section */
-        .vision-mission {
-            padding: 80px 0;
-            background: linear-gradient(to right, rgba(200, 16, 46, 0.05), rgba(255, 215, 0, 0.05));
-        }
-
-        .vm-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .vm-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 40px 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-top: 5px solid var(--primary);
-            text-align: center;
-        }
-
-        .vm-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .vm-card.mission {
-            border-top-color: var(--secondary);
-        }
-
-        .vm-card.objective {
-            border-top-color: var(--accent);
-        }
-
-        .vm-icon {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-        }
-
-        .vm-card.mission .vm-icon {
-            background-color: var(--secondary);
-            color: #333;
-        }
-
-        .vm-card.objective .vm-icon {
-            background-color: var(--accent);
-        }
-
-        .vm-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .vm-card.mission h3 {
-            color: #b38f00;
-        }
-
-        .vm-card.objective h3 {
-            color: var(--accent);
-        }
-
-        .vm-card ul {
-            text-align: left;
-            margin-top: 20px;
-        }
-
-        .vm-card li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .vm-card li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .vm-card.mission li:before {
-            color: var(--secondary);
-        }
-
-        .vm-card.objective li:before {
-            color: var(--accent);
-        }
-
-        /* Organizational Chart Section */
-        .org-chart-section {
-            padding: 80px 0;
-            background-color: white;
-        }
-
-        .org-chart-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .org-chart-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: var(--gray);
-        }
-
-        .org-chart-display {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 0;
-            box-shadow: var(--shadow);
-            border: 2px dashed var(--primary);
-            margin-bottom: 30px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .org-chart-placeholder {
-            background: linear-gradient(45deg, #f0f0f0 25%, #f8f8f8 25%, #f8f8f8 50%, #f0f0f0 50%, #f0f0f0 75%, #f8f8f8 75%, #f8f8f8 100%);
-            background-size: 56.57px 56.57px;
-            border-radius: 8px;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .org-chart-placeholder i {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            opacity: 0.7;
-        }
-
-        .org-chart-placeholder h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .org-chart-placeholder p {
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
-
-        .org-chart-preview {
-            display: none;
-            width: 100%;
-            height: auto;
-            max-height: 600px;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .org-chart-preview.active {
-            display: block;
-        }
-
-        .org-chart-controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .chart-btn {
-            padding: 10px 25px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-weight: 600;
-        }
-
-        .chart-btn:hover {
-            background-color: #a50d26;
-            transform: translateY(-3px);
-        }
-
-        .chart-btn.active {
-            background-color: var(--primary);
-            color: #ffffff;
-        }
-
-        .chart-download {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .chart-download a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--primary);
-            color: #ffffff;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .chart-download a:hover {
-            background-color: #a50d26;
-            transform: translateY(-3px);
-        }
-
-        /* Activities Section */
-        .activities {
-            padding: 80px 0;
-            background: linear-gradient(to right, rgba(200, 16, 46, 0.05), rgba(255, 215, 0, 0.05));
-        }
-
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .activity-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 2px solid #f0f0f0;
-        }
-
-        .activity-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-
-        .activity-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .activity-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .activity-card:hover .activity-img img {
-            transform: scale(1.1);
-        }
-
-        .activity-content {
-            padding: 25px;
-        }
-
-        .activity-content h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .activity-content p {
-            color: var(--gray);
-            margin-bottom: 15px;
-        }
-
-        .activity-date {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Committee Section */
-        .committee {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .committee-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
-            color: var(--gray);
-        }
-        
-        .committee-structure {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .committee-level {
-            margin-bottom: 20px;
-        }
-        
-        .committee-level-title {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .committee-level-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 3px;
-            background-color: var(--secondary);
-        }
-        
-        .committee-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .committee-grid-full {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .member-card {
-            text-align: center;
-            padding: 25px 20px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            background-color: white;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .member-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .member-card.penasihat {
-            border-top: 5px solid var(--primary);
-        }
-        
-        .member-card.presiden {
-            border-top: 5px solid var(--primary);
-        }
-        
-        .member-card.timbalan {
-            border-top: 5px solid var(--primary);
-        }
-        
-        .member-card.setiausaha {
-            border-top: 5px solid #C8102E;
-        }
-        
-        .member-card.bendahari {
-            border-top: 5px solid #C8102E;
-        }
-
-        .member-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 5px solid var(--secondary);
-        }
-
-        .member-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .member-card h4 {
-            color: var(--primary);
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-position {
-            color: white;
-            background-color: var(--primary);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        
-        .member-card.penasihat .member-position {
-            background-color: var(--primary);
-        }
-        
-        .member-card.presiden .member-position {
-            background-color: var(--primary);
-        }
-        
-        .member-card.timbalan .member-position {
-            background-color: var(--primary);
-            color: #ffffff;
-        }
-        
-        .member-card.setiausaha .member-position {
-            background-color: #C8102E;
-        }
-        
-        .member-card.bendahari .member-position {
-            background-color: #C8102E;
-        }
-
-        .member-faculty {
-            color: var(--gray);
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-        
-        .member-contact {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed #ddd;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .member-contact a {
-            color: var(--gray);
-            transition: var(--transition);
-        }
-        
-        .member-contact a:hover {
-            color: var(--primary);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: linear-gradient(to right, rgba(200, 16, 46, 0.05), rgba(255, 215, 0, 0.05));
-        }
-
-        .contact-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 50px;
-            text-align: center;
-        }
-
-        .contact-info {
-            flex: 1;
-            max-width: 700px;
-            width: 100%;
-        }
-
-        .contact-info h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .contact-item {
-                display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 20px;
-        justify-content: space-evenly;
-        align-content: flex-start;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            flex: 1;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(200, 16, 46, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(90deg, var(--primary) 0%, #a50d26 100%);
-            color: white;
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            color: var(--secondary);
-        }
-
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--secondary);
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--secondary);
-            color: var(--primary);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .committee-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .vm-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .org-chart-placeholder {
-                height: 400px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
-            }
-            
-            nav {
-                position: fixed;
-                top: 90px;
-                left: -100%;
-                width: 100%;
-                background-color: var(--primary);
-                box-shadow: var(--shadow);
-                transition: var(--transition);
-                padding: 20px;
-            }
-            
-            nav.active {
-                left: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .committee-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .org-chart-placeholder {
-                height: 300px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 80px 0;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .about, .activities, .committee, .contact, .vision-mission, .org-chart-section {
-                padding: 60px 0;
-            }
-            
-            .member-img {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .vm-card {
-                padding: 30px 20px;
-            }
-            
-            .org-chart-placeholder {
-                height: 250px;
-                padding: 20px;
-            }
-            
-            .org-chart-placeholder h3 {
-                font-size: 1.2rem;
-            }
-            
-            .org-chart-controls {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header & Navigation -->
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
     <header>
         <div class="container header-container">
             <div class="logo">
                 <div class="logo-img">
                     <!-- LOGO PERMAS ASLI -->
-                    <img src="images\logoPermas.png" alt="Logo PERMAS UPNM" 
+                    <img src="images/logoPermas.png" alt="Logo PERMAS UPNM" 
                         style="width: 70px; height: auto; border-radius: 8px; border: 2px solid #FFD700;">
     </div>
     <div class="logo-text">
@@ -1030,6 +45,9 @@
     </header>
 
     <!-- Hero Section -->
+    <!-- =========================================================
+         HERO SECTION
+         ========================================================= -->
     <section class="hero" id="home">
         <div class="container">
             <h2>Selamat Datang ke PERMAS UPNM</h2>
@@ -1039,6 +57,9 @@
     </section>
 
     <!-- About Section -->
+    <!-- =========================================================
+         ABOUT SECTION
+         ========================================================= -->
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title">Tentang PERMAS UPNM</h2>
@@ -1058,6 +79,9 @@
     </section>
 
     <!-- Vision Mission Section -->
+    <!-- =========================================================
+         VISION, MISSION AND OBJECTIVES
+         ========================================================= -->
     <section class="vision-mission" id="vm">
         <div class="container">
             <h2 class="section-title secondary">Visi, Misi & Objektif</h2>
@@ -1105,6 +129,9 @@
     </section>
 
     <!-- Organizational Chart Section -->
+    <!-- =========================================================
+         ORGANIZATIONAL CHART SECTION
+         ========================================================= -->
     <section class="org-chart-section" id="org-chart">
         <div class="container">
             <h2 class="section-title">Carta Organisasi PERMAS UPNM</h2>
@@ -1113,7 +140,7 @@
             <div class="org-chart-container">
                 <div class="org-chart-display">
                     <!-- CARTA ORGANISASI PERMAS YANG SEBENAR -->
-                    <img src="images\cartaOrganisasi (1).png" 
+                    <img src="images/cartaOrganisasi (1).png" 
                      alt="Carta Organisasi PERMAS UPNM" 
                      class="org-chart-preview active"
                      style="width: 100%; height: auto; display: block;">
@@ -1163,6 +190,9 @@
     </section>
 
     <!-- Activities Section -->
+    <!-- =========================================================
+         ACTIVITIES SECTION
+         ========================================================= -->
     <section class="activities" id="activities">
         <div class="container">
             <h2 class="section-title">Aktiviti & Program</h2>
@@ -1262,6 +292,9 @@
     </section>
 
     <!-- Committee Section -->
+    <!-- =========================================================
+         COMMITTEE SECTION
+         ========================================================= -->
     <section class="committee" id="committee">
         <div class="container">
             <h2 class="section-title">MAJLIS TERTINGGI PERMAS UPNM</h2>
@@ -1274,7 +307,7 @@
                     <div class="committee-grid">
                         <div class="member-card penasihat">
                             <div class="member-img">
-                                <img src="images\prof dr azliana.png" alt="Prof. Madya Dr. Nor Azliana Akmal Binti Jamaludin">
+                                <img src="images/prof dr azliana.png" alt="Prof. Madya Dr. Nor Azliana Akmal Binti Jamaludin">
                             </div>
                             <h4>Prof. Madya Dr. Nor Azliana Akmal Binti Jamaludin</h4>
                             <div class="member-position">Penasihat Utama</div>
@@ -1293,7 +326,7 @@
                     <div class="committee-grid">
                         <div class="member-card presiden">
                             <div class="member-img">
-                                <img src="images\Adib.jpg" alt="Muhammad Adib Ubaidullah Bin Azman">
+                                <img src="images/Adib.jpg" alt="Muhammad Adib Ubaidullah Bin Azman">
                             </div>
                             <h4>Muhammad Adib Ubaidullah Bin Azman</h4>
                             <div class="member-position">Presiden</div>
@@ -1319,7 +352,7 @@
                         
                         <div class="member-card timbalan">
                             <div class="member-img">
-                                <img src="images\Asyraf.jpg" alt="Ahmad Asyraf Hakimi Bin Ahmad Azanor Herman">
+                                <img src="images/Asyraf.jpg" alt="Ahmad Asyraf Hakimi Bin Ahmad Azanor Herman">
                             </div>
                             <h4>Ahmad Asyraf Hakimi Bin Ahmad Azanor Herman</h4>
                             <div class="member-position">Timbalan Presiden 2</div>
@@ -1351,7 +384,7 @@
                         
                         <div class="member-card bendahari">
                             <div class="member-img">
-                                <img src="images\Shahira.jpg" alt="Shahira Elyna Binti Abdul Mudtallib">
+                                <img src="images/Shahira.jpg" alt="Shahira Elyna Binti Abdul Mudtallib">
                             </div>
                             <h4>Shahira Elyna Binti Abdul Mudtallib</h4> 
                             <div class="member-position">Bendahari</div>
@@ -1372,6 +405,9 @@
     </section>
 
     <!-- Contact Section -->
+    <!-- =========================================================
+         CONTACT SECTION
+         ========================================================= -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Hubungi Kami</h2>
@@ -1423,6 +459,9 @@
     </section>
 
     <!-- Footer -->
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1461,123 +500,6 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile Navigation Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileToggle.querySelector('i').classList.toggle('fa-bars');
-            mobileToggle.querySelector('i').classList.toggle('fa-times');
-        });
-        
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                // Close mobile menu if open
-                if (mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    mobileToggle.querySelector('i').classList.toggle('fa-bars');
-                    mobileToggle.querySelector('i').classList.toggle('fa-times');
-                }
-                
-                // Scroll to section
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                
-                // Update active link
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-        
-        
-        // Update active navigation link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Organizational Chart Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const placeholder = document.getElementById('placeholder');
-            const showChartBtn = document.getElementById('showChartBtn');
-            const orgChartPreview = document.getElementById('orgChartPreview');
-            const chartButtons = document.querySelectorAll('.chart-btn');
-            
-            // Sample organizational chart images (in a real site, these would be actual images)
-            const chartImages = {
-                full: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-                executive: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80&grayscale',
-                bureau: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80&blur=2'
-            };
-            
-            // Show chart when button is clicked
-            showChartBtn.addEventListener('click', function() {
-                placeholder.style.display = 'none';
-                orgChartPreview.src = chartImages.full;
-                orgChartPreview.classList.add('active');
-                
-                // Update button text
-                showChartBtn.textContent = 'Sembunyikan Carta Organisasi';
-                showChartBtn.onclick = function() {
-                    placeholder.style.display = 'flex';
-                    orgChartPreview.classList.remove('active');
-                    showChartBtn.textContent = 'Paparkan Carta Organisasi';
-                    showChartBtn.onclick = arguments.callee;
-                };
-            });
-            
-            // Chart type selection
-            chartButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const chartType = this.getAttribute('data-chart');
-                    
-                    // Update active button
-                    chartButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update chart image if it's already shown
-                    if (orgChartPreview.classList.contains('active')) {
-                        orgChartPreview.src = chartImages[chartType];
-                    }
-                });
-            });
-            
-            // Highlight current year in footer
-            const yearSpan = document.querySelector('.copyright p');
-            if (yearSpan) {
-                yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', new Date().getFullYear());
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
